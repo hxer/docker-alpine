@@ -22,7 +22,7 @@ RUN mkdir -p /run/mysqld && \
 # Add the files
 ADD root /
 
-VOLUME ["/var/www/localhost/htdocs"]
+#VOLUME ["/var/www/localhost/htdocs"]
 
 # Expose the ports for apache
 EXPOSE 80 3306

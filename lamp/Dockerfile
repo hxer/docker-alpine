@@ -1,4 +1,5 @@
 From alpine:3.4
+MAINTAINER janes - https://github.com/hxer
 
 RUN apk update
 # install mysql

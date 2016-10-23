@@ -1,5 +1,5 @@
 FROM alpine:3.4
-MAINTAINER janes <miscjanes@gmail.com>
+MAINTAINER janes https://github.com/hxer
 
 ## S6 Overlay 
 ENV S6_VERSION=v1.18.1.1
