@@ -27,3 +27,5 @@ WORKDIR /root/tool/
 
 RUN git clone https://github.com/lijiejie/subDomainsBrute.git && \
     git clone https://github.com/maurosoria/dirsearch.git
+
+CMD ["/bin/sh"]
