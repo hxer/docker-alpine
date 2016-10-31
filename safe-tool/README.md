@@ -26,7 +26,7 @@
 
 * BruteX
 
-> install.sh base on the linux, which support ap-get install
+> install.sh base on the linux, which support ap-get install, kali is best
 
 自动爆破目标服务器上的一些服务，包括开放的端口，域名，用户名和密码
 
