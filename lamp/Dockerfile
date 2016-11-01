@@ -32,6 +32,8 @@ RUN echo "nohup mysqld --skip-grant-tables --bind-address 0.0.0.0 --user mysql >
 RUN echo "tail -f /var/log/apache2/access.log" >> /start.sh
 RUN chmod +x /start.sh
 
+WORKDIR /var/www/localhost/htdocs/
+
 EXPOSE 80
 EXPOSE 3306
 
