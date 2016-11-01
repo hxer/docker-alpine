@@ -19,7 +19,7 @@ RUN apk add apache2 \
 # configure apache
 RUN sed -i 's#AllowOverride none#AllowOverride All#' /etc/apache2/httpd.conf && \
     sed -i 's#ServerName www.example.com:80#\nServerName localhost:80#' /etc/apache2/httpd.conf
-RUN mkdir -p /run/apache2 && chown -R apache:apache /run/apache2
+RUN mkdir -p /run/apache2 && chown -R apache:apache /run/apache2 && chown -R apache:apache /var/www/localhost/htdocs/ 
 
 #start apache
 RUN echo "#!/bin/sh" >> /start.sh
