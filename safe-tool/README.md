@@ -12,7 +12,7 @@
 
 ## run
 
-`docker run janes/alpine-safetool`
+`docker run -it janes/alpine-safetool /bin/sh`
 
 ## tool
 
