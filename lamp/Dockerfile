@@ -31,7 +31,7 @@ RUN echo "#!/bin/sh" > /start.sh && \
     echo "httpd" >> /start.sh && \
     echo "nohup mysqld --skip-grant-tables --bind-address 0.0.0.0 --user mysql > /dev/null 2>&1 &" >> /start.sh && \
     echo "tail -f /var/log/apache2/access.log" >> /start.sh && \
-    chmod +x /start.sh
+    chmod u+x /start.sh
 
 WORKDIR /var/www/localhost/htdocs/
 
