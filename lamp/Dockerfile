@@ -38,7 +38,7 @@ WORKDIR /var/www/localhost/htdocs/
 EXPOSE 80
 EXPOSE 3306
 
-VOLUME ["/var/www/localhost/htdocs","/var/lib/mysql","/etc/mysql/"]
+#VOLUME ["/var/www/localhost/htdocs","/var/lib/mysql","/etc/mysql/"]
 ENTRYPOINT ["/start.sh"]
 
 
