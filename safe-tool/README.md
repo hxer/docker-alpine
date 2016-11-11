@@ -5,10 +5,15 @@
 * curl
 * nmap
 
+### py2
+
 * sqlmap
 * [subDomainsBrute](https://github.com/lijiejie/subDomainsBrute)
-* [dirsearch](https://github.com/maurosoria/dirsearch)
-* [BruteX](https://github.com/1N3/BruteX) -- not yet to add
+* [OpenDoor](https://github.com/stanislav-web/OpenDoor)
+
+### py3
+
+[dirsearch](https://github.com/maurosoria/dirsearch) 
 
 ## run
 
@@ -16,22 +21,18 @@
 
 ## tool
 
+### 域名
+
 * subDomainBrute
 
 子域名爆破， 通过`字典`查询公共DNS服务器爆破
+
+### 目录 + 文件
 
 * dirsearch
 
 网站目录爆破，支持php,asp等，通过`字典`爆破
 
-* BruteX
+* OpenDoor
 
-> install.sh base on the linux, which support ap-get install, kali is best
-
-自动爆破目标服务器上的一些服务，包括开放的端口，域名，用户名和密码
-
-| 服务 | 检测引擎 |
-| --- | ---- |
-| ports | nmap |
-| username/password | hydra |
-| domain | dnsenum |
+OWASP Directory Access scanner
