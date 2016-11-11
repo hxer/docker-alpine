@@ -50,7 +50,7 @@ RUN cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && \
     sed -i 's#ServerName www.example.com:80#\nServerName localhost:80#' /etc/apache2/httpd.conf
 
 # Configure xdebug
-RUN echo "extension=xdebug.so" > /etc/php5/conf.d/xdebug.ini && \ 
+RUN echo "zend_extension=xdebug.so" > /etc/php5/conf.d/xdebug.ini && \ 
     echo -e "\n[XDEBUG]"  >> /etc/php5/conf.d/xdebug.ini && \ 
     echo "xdebug.remote_enable=1" >> /etc/php5/conf.d/xdebug.ini && \  
     echo "xdebug.remote_connect_back=1" >> /etc/php5/conf.d/xdebug.ini && \ 
