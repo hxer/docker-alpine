@@ -55,3 +55,11 @@ password:
 ```
 
 default, it will create a empty databse whose name is `db`.
+
+* change my.conf configuration
+
+```
+log_error = /var/lib/mysql/error.log
+general_log = ON
+general_log_file = /var/lib/mysql/query.log
+```

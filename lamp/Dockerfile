@@ -47,7 +47,10 @@ RUN cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && \
     mysql_install_db --user=mysql --verbose=1 --basedir=/usr --datadir=/var/lib/mysql --rpm > /dev/null && \
     mkdir -p /run/apache2 && chown -R apache:apache /run/apache2 && chown -R apache:apache /var/www/localhost/htdocs/ && \
     sed -i 's#AllowOverride none#AllowOverride All#' /etc/apache2/httpd.conf && \
-    sed -i 's#ServerName www.example.com:80#\nServerName localhost:80#' /etc/apache2/httpd.conf
+    sed -i 's#ServerName www.example.com:80#\nServerName localhost:80#' /etc/apache2/httpd.conf && \
+    sed -i '/skip-external-locking/a log_error = \/var\/lib\/mysql\/error.log' /etc/mysql/my.cnf && \
+    sed -i '/skip-external-locking/a general_log = ON' /etc/mysql/my.cnf && \
+    sed -i '/skip-external-locking/a general_log_file = \/var\/lib\/mysql\/query.log' /etc/mysql/my.cnf
 
 # Configure xdebug
 RUN echo "zend_extension=xdebug.so" > /etc/php5/conf.d/xdebug.ini && \ 
