@@ -16,6 +16,7 @@ ENV PACKAGES="\
 RUN apk add --update $PACKAGES && \
     pip install --upgrade pip
 
+# config logs path
 RUN git clone https://github.com/wufeifei/cobra && \
     cd cobra && \
     mkdir logs && \
@@ -33,6 +34,8 @@ RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld /var/lib/mysql && \
 
 RUN echo "#!/bin/sh" > /start.sh && \
     echo "nohup mysqld --skip-grant-tables --bind-address 0.0.0.0 --user mysql > /dev/null 2>&1 &" >> /start.sh && \
+    echo "sleep 3" >> /start.sh && \
+    echo "python /cobra/cobra.py install &" >> /start.sh && \
     echo "python /cobra/cobra.py start &" >> /start.sh && \
     echo "tail -f /cobra/logs/cobra.log" >> /start.sh && \
     chmod u+x /start.sh
