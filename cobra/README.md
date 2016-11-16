@@ -6,9 +6,9 @@
 
 ### gui manage
 
-[http://127.0.0.1:5000/admin/index](http://127.0.0.1:5000/admin/index)
-
 * Default username and password
+
+url: `admin/index`
 
 username: `admin`
 
