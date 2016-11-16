@@ -14,9 +14,12 @@ ENV PACKAGES="\
 "
 
 RUN apk add --update $PACKAGES && \
-    pip install --upgrade pip && \
-    git clone https://github.com/wufeifei/cobra && \
+    pip install --upgrade pip
+
+RUN git clone https://github.com/wufeifei/cobra && \
     cd cobra && \
+    mkdir logs && \
+    touch logs/cobra.log && \
     cp config.example config && \
     sed -i "s#host: 127.0.0.1#host: 0.0.0.0#" config && \
     sed -i "s#port: 5000#port: 80#" config && \
