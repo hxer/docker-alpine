@@ -7,7 +7,7 @@ ENV PHP_MEMORY_LIMIT    512M
 ENV MAX_UPLOAD          50M
 ENV PHP_MAX_FILE_UPLOAD 200
 ENV PHP_MAX_POST        100M
-
+ENV DUMB_INIT_VERSION   1.2.0
 # 替换为阿里云的源，构建速度更快
 # RUN sed -i 's#dl-cdn\.alpinelinux\.org#mirrors\.aliyun\.com#' /etc/apk/repositories
 
@@ -80,7 +80,7 @@ RUN echo "zend_extension=xdebug.so" > /etc/php5/conf.d/xdebug.ini && \
     echo "xdebug.idekey=PHPSTORM" >> /etc/php5/conf.d/xdebug.ini && \ 
     echo "xdebug.remote_log=\"/tmp/xdebug.log\"" >> /etc/php5/conf.d/xdebug.ini
 
-#start apache
+# Start apache
 RUN echo "#!/bin/sh" > /start.sh && \
     echo "httpd" >> /start.sh && \
     echo "nohup mysqld --skip-grant-tables --bind-address 0.0.0.0 --user mysql > /dev/null 2>&1 &" >> /start.sh && \
@@ -88,10 +88,14 @@ RUN echo "#!/bin/sh" > /start.sh && \
     echo "tail -f /var/log/apache2/access.log" >> /start.sh && \
     chmod u+x /start.sh
 
+# Add dumb-init
+RUN wget -O /usr/local/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v${DUMB_INIT_VERSION}/dumb-init_${DUMB_INIT_VERSION}_amd64 && \
+    chmod +x /usr/local/bin/dumb-init
+
 WORKDIR /www
 
 EXPOSE 80
 EXPOSE 3306
 
 #VOLUME ["/www","/var/lib/mysql","/etc/mysql/"]
-ENTRYPOINT ["/start.sh"]
+ENTRYPOINT ["/usr/local/bin/dumb-init", "/start.sh"]
